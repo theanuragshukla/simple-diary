@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
 
         var msg = req.body.msg;
-        var remark = req.body.remark;
+      //  var remark = req.body.remark;
         fs.appendFile(`./static/diary/diary.txt`, msg, (err) => {
                 if (err) throw err;
         });
