@@ -15,6 +15,6 @@ app.get('/', (req, res) => {
 });
 
 
-http.listen(port|| process.env.PORT, () => {
+http.listen(process.env.PORT || port, () => {
         console.log(`listening on http://localhost:${port}/`);
 });
