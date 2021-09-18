@@ -15,6 +15,20 @@ app.get('/', (req, res) => {
 });
 
 
+app.post('/', (req, res) => {
+
+        var msg = req.body.msg;
+        var remark = req.body.remark;
+        fs.appendFile(`./static/diary/diary.txt`, msg, (err) => {
+                if (err) throw err;
+        });
+        res.status(200);
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({
+                result:'done',
+        }));
+});
+
 http.listen(process.env.PORT || port, () => {
         console.log(`listening on http://localhost:${port}/`);
 });
