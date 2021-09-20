@@ -17,16 +17,18 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
 
-        var msg = req.body.msg;
-      //  var remark = req.body.remark;
-        fs.appendFile(`./static/diary/diary.txt`, msg, (err) => {
+        var msg = req.body.a;
+        var remark = req.body.b;
+      console.log(msg);
+fs.appendFile(`./static/diary/diary.txt`, msg + "\n", (err) => {
                 if (err) throw err;
         });
         res.status(200);
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({
-                result:'done',
+                result:'done'
         }));
+
 });
 
 http.listen(process.env.PORT || port, () => {

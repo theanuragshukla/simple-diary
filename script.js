@@ -1,11 +1,20 @@
 function submitForm(){
-    var xhr = new XMLHttpRequest() ;
-    xhr.open("POST", "/");
-    xhr.onreadystatechange = function() {
-         if(xhr.readyState==4) {
-         alert(xhr.status);
-     }
-}
-        var formData = new FormData(document.getElementById("form")); 
-        xhr.send(formData);
+var a= document.getElementById('msg').value;
+var b= document.getElementById('remark').value;
+  $.ajax({
+            url:"/",
+            type: "post",
+            dataType: 'json',
+            data:{a: a,b:b},
+            success:function(result){
+			document.getElementById('msg').value='';
+			document.getElementById('remark').value='';
+		    	
+
+         },
+         error:function(result){
+        	 alert('error');
+
+                    }
+     });
 }
