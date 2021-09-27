@@ -31,6 +31,10 @@ fs.appendFile(`./static/diary/diary.txt`, msg + "\n", (err) => {
 
 });
 
+app.get('/diaryall',(req,res)=>{
+	res.sendFile(__dirname+'/static/diary/diary.txt')
+})
+
 http.listen(process.env.PORT || port, () => {
         console.log(`listening on http://localhost:${port}/`);
 });
