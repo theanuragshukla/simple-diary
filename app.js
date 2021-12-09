@@ -20,7 +20,7 @@ app.post('/', (req, res) => {
         var msg = req.body.a;
         var remark = req.body.b;
       console.log(msg);
-fs.appendFile(`./static/diary/diary.txt`,"------------------------------------------\n"+ msg + "\n\nremarks: "+remark+"\n\n", (err) => {
+fs.appendFile(`./static/diary/diary.txt`,"------------------------------------------\ntime: "+timestamp()+"\n"+ msg + "\n\nremarks: "+remark+"\n\n", (err) => {
                 if (err) throw err;
         });
         res.status(200);
@@ -35,6 +35,23 @@ app.get('/diaryall',(req,res)=>{
 	res.sendFile(__dirname+'/static/diary/diary.txt')
 })
 
+
+function timestamp(){
+  function pad(n) {return n<10 ? "0"+n : n}
+  d=new Date()
+  dash="-"
+  colon=":"
+  return d.getFullYear()+dash+
+  pad(d.getMonth()+1)+dash+
+  pad(d.getDate())+" "+
+  pad(d.getHours())+colon+
+  pad(d.getMinutes())+colon+
+  pad(d.getSeconds())
+}
+
+
+
 http.listen(process.env.PORT || port, () => {
         console.log(`listening on http://localhost:${port}/`);
 });
+
