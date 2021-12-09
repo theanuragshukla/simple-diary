@@ -20,14 +20,14 @@ app.post('/', (req, res) => {
         var msg = req.body.msg;
         var remark = req.body.remark;
      // console.log(msg);
-fs.appendFile(`./static/diary/diary.txt`,"------------------------------------------\ntime: "+timestamp()+"\n"+ msg + "\n\nremarks: "+remark+"\n\n", (err) => {
+fs.appendFile(`./static/diary/diary.txt`,"------------------------------------------\ntime: "+getTime()+"\n"+ msg + "\n\nremarks: "+remark+"\n\n", (err) => {
                 if (err) throw err;
         });
         res.status(200);
         res.setHeader('Content-Type', 'application/json');
-        //res.end(JSON.stringify({
-  //              result:'done'
-//        }));
+        res.end(JSON.stringify({
+                result:'done'
+        }));
 
 });
 
@@ -50,7 +50,7 @@ function timestamp(){
 }
 
 function getTime(){
-return moment().format("YYYY-MM-DD HH:mm:ss");
+return moment.unix(utc).tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');
 }
 
 http.listen(process.env.PORT || port, () => {

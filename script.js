@@ -5,12 +5,10 @@ var b= document.getElementById('remark').value;
             url:"/",
             type: "post",
             dataType: 'json',
-            data:{a: a,b:b},
+            data:{msg: a,remark:b},
             success:function(result){
 			document.getElementById('msg').value='';
 			document.getElementById('remark').value='';
-		    	
-
          },
          error:function(result){
         	 alert('error');
