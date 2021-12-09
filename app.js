@@ -50,7 +50,12 @@ function timestamp(){
 }
 
 function getTime(){
-return moment.unix(utc).tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');
+d = new Date();
+utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+nd = new Date(utc + (3600000*+5.5));
+var ist =  nd.toLocaleString();
+//console.log("IST now is : " +ist);
+return ist;
 }
 
 http.listen(process.env.PORT || port, () => {
