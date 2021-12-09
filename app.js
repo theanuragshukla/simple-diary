@@ -3,7 +3,7 @@ const http = require('http').Server(app);
 const port = '8000';
 const express = require('express');
 const fs = require('fs');
-const moment = require('moment');
+
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
@@ -20,7 +20,7 @@ app.post('/', (req, res) => {
         var msg = req.body.msg;
         var remark = req.body.remark;
      // console.log(msg);
-fs.appendFile(`./static/diary/diary.txt`,"------------------------------------------\ntime: "+getTime()+"\n"+ msg + "\n\nremarks: "+remark+"\n\n", (err) => {
+fs.appendFile(`./static/diary/diary.txt`,"------------------------------------------\ntime: "+getTime()+"\n\n"+ msg + "\n\nremarks: "+remark+"\n\n", (err) => {
                 if (err) throw err;
         });
         res.status(200);
