@@ -20,7 +20,7 @@ app.post('/', (req, res) => {
         var msg = req.body.a;
         var remark = req.body.b;
       console.log(msg);
-fs.appendFile(`./static/diary/diary.txt`, msg + "\n", (err) => {
+fs.appendFile(`./static/diary/diary.txt`,"------------------------------------------\n"+ msg + "\n\nremarks: "+remark+"\n\n", (err) => {
                 if (err) throw err;
         });
         res.status(200);
